@@ -1,19 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="./style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 </head>
+
 <body>
     <form class="js-form">
         <input type="text" class="js-input search">
+        <select class="js-select genre"></select>
+        <button class="search-btn">Search</button>
     </form>
-    <div class="movie-container js-container">
+    <button class="btn btn-primary w-100 mt-4" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions"
+        aria-controls="offcanvasWithBothOptions">Watchlist</button>
+
+    <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions"
+        aria-labelledby="offcanvasWithBothOptionsLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Movies List</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+
+        </div>
     </div>
+    <div class="movie-container js-container">
+        <template class="movie-template">
+            <div class="movie-card">
+                <img src="" alt="">
+                <h2 class="movie-title"></h2>
+                <p><strong>Year:</strong> <span class="movie-year"></span></p>
+                <p><strong>Category:</strong> <span class="movie-category"></span></p>
+                <p><strong>IMDb:</strong> <span class="movie-imdb"></span></p>
+                <p><strong>Runtime:</strong> <span class="movie-runtime"></span></p>
+                <p><strong>Language:</strong> <span class="movie-language"></span></p>
+                <a class="movie-trailer">Watch Trailer</a>
+                <a class="movie-info" href="#">More info</a> 
+                <a class="js-add watchlist">Add To Watchlist</a>
+            </div>
+        </template>
+
+
+    </div>
+
+
+
+<div id="movieModal" class="modal">
+  <div class="modal-content">
+    <span class="close-btn" id="closeModal">&times;</span>
+
+    <div class="modal-video">
+      <iframe id="movieTrailer" src="" frameborder="0" allowfullscreen></iframe>
+    </div>
+
+
+    <div class="modal-details">
+      <h2 id="movieTitle"></h2>
+      <p><strong>IMDb:</strong> <span id="movieRating"></span></p>
+      <p><strong>Sana:</strong> <span id="movieDate"></span></p>
+      <p><strong>Davomiyligi:</strong> <span id="movieRuntime"></span> min</p>
+      <p id="movieSummary"></p>
+    </div>
+  </div>
+</div>
+
+
+
     <p class="js-p output"></p>
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
     <script src="./movie.js"></script>
     <script src="./main.js"></script>
 </body>
+
 </html>
