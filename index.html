@@ -13,11 +13,19 @@
 <body>
     <form class="js-form">
         <input type="text" class="js-input search">
-        <select class="js-select genre"></select>
+        <select class="js-select genre">
+            <option value="" selected disabled>select any genre</option>
+        </select>
+        <select class="js-select-sort sort-movies">
+            <option>A-Z</option>
+            <option>Z-A</option>
+            <option>The oldest</option>
+            <option>The newest</option>
+        </select>
         <button class="search-btn">Search</button>
     </form>
-    <button class="btn btn-primary w-100 mt-4" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions"
-        aria-controls="offcanvasWithBothOptions">Watchlist</button>
+    <button class="btn btn-primary w-100 mt-4" type="button" data-bs-toggle="offcanvas"
+        data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">Watchlist</button>
 
     <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions"
         aria-labelledby="offcanvasWithBothOptionsLabel">
@@ -40,7 +48,7 @@
                 <p><strong>Runtime:</strong> <span class="movie-runtime"></span></p>
                 <p><strong>Language:</strong> <span class="movie-language"></span></p>
                 <a class="movie-trailer">Watch Trailer</a>
-                <a class="movie-info" href="#">More info</a> 
+                <a class="movie-info" href="#">More info</a>
                 <a class="js-add watchlist">Add To Watchlist</a>
             </div>
         </template>
@@ -50,24 +58,24 @@
 
 
 
-<div id="movieModal" class="modal">
-  <div class="modal-content">
-    <span class="close-btn" id="closeModal">&times;</span>
+    <div id="movieModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" id="closeModal">&times;</span>
 
-    <div class="modal-video">
-      <iframe id="movieTrailer" src="" frameborder="0" allowfullscreen></iframe>
+            <div class="modal-video">
+                <iframe id="movieTrailer" src="" frameborder="0" allowfullscreen></iframe>
+            </div>
+
+
+            <div class="modal-details">
+                <h2 id="movieTitle"></h2>
+                <p><strong>IMDb:</strong> <span id="movieRating"></span></p>
+                <p><strong>Sana:</strong> <span id="movieDate"></span></p>
+                <p><strong>Davomiyligi:</strong> <span id="movieRuntime"></span> min</p>
+                <p id="movieSummary"></p>
+            </div>
+        </div>
     </div>
-
-
-    <div class="modal-details">
-      <h2 id="movieTitle"></h2>
-      <p><strong>IMDb:</strong> <span id="movieRating"></span></p>
-      <p><strong>Sana:</strong> <span id="movieDate"></span></p>
-      <p><strong>Davomiyligi:</strong> <span id="movieRuntime"></span> min</p>
-      <p id="movieSummary"></p>
-    </div>
-  </div>
-</div>
 
 
 
