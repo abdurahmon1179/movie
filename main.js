@@ -74,7 +74,7 @@ function renderMovies(fullMovie) {
         const movieItem = document.createElement("div");
         movieItem.classList.add("watchlist-item");
         movieItem.innerHTML = `
-          <img src="${movie.movie_medium_image}" alt="">
+          <img src="${movie.movie_max_image}" alt="">
           <p><strong>${movie.title}</strong> (${movie.movie_year})</p>
           <button class="btn btn-sm btn-danger js-remove">Remove</button>
         `;
