@@ -13,7 +13,7 @@ h1 {
 .movie-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 20px;
+  gap: 93px;
   margin-top: 70px;
 }
 
@@ -25,7 +25,6 @@ h1 {
   padding: 15px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   max-width: 300px;
 }
 
@@ -173,4 +172,10 @@ form {
   padding: 12px 18px;
   width: 100%;
   outline: none;
+}
+
+.date-year{
+  padding: 12px 18px;
+  outline: none;
+  width: 100%;
 }

@@ -14,6 +14,8 @@ const modalRating = document.getElementById("movieRating");
 const modalDate = document.getElementById("movieDate");
 const modalRuntime = document.getElementById("movieRuntime");
 const modalSummary = document.getElementById("movieSummary");
+const minYearInput = document.querySelector(".js-min-year");
+const maxYearInput = document.querySelector(".js-max-year");
 
 const movieHourAndMinute = function (time) {
   const hour = time / 60;
@@ -102,22 +104,32 @@ elForm.addEventListener("submit", function (evt) {
   evt.preventDefault();
 
   const searchVal = elInput.value.trim().toLowerCase();
-  const selectedGenre = selectGenre.value; 
+  const selectedGenre = selectGenre.value;
+
+  const minYear = minYearInput.value ? Number(minYearInput.value) : 1999;
+  const maxYear = maxYearInput.value ? Number(maxYearInput.value) : 2019;
 
   const filteredMovies = movies.filter((item) => {
     const matchesSearch = item.title.toLowerCase().includes(searchVal);
-    const matchesGenre = selectedGenre === "" || item.categories.includes(selectedGenre);
+    const matchesGenre =
+      selectedGenre === "all" ||
+      selectedGenre === "" ||
+      item.categories.includes(selectedGenre);
 
-    return matchesSearch && matchesGenre;
+      
+    const matchesYear =
+      item.movie_year >= minYear && item.movie_year <= maxYear;
+
+    return matchesSearch && matchesGenre && matchesYear;
   });
 
-  if(selectSort.value == "A-Z"){
+  if (selectSort.value == "A-Z") {
     filteredMovies.sort((a, b) => a.title.charCodeAt(0) - b.title.charCodeAt(0));
-  }else if (selectSort.value == "Z-A"){
+  } else if (selectSort.value == "Z-A") {
     filteredMovies.sort((a, b) => b.title.charCodeAt(0) - a.title.charCodeAt(0));
-  }else if(selectSort.value == "The oldest"){
+  } else if (selectSort.value == "The oldest") {
     filteredMovies.sort((a, b) => a.movie_year - b.movie_year);
-  }else{
+  } else {
     filteredMovies.sort((a, b) => b.movie_year - a.movie_year);
   }
 
@@ -127,10 +139,8 @@ elForm.addEventListener("submit", function (evt) {
   } else {
     renderMovies(filteredMovies);
   }
-
- 
-  
 });
+
 
 const genres = [];
 
@@ -150,6 +160,11 @@ function getUniqueGenres() {
 }
 
 function renderGenresOptions(genres, selectElement) {
+  const allOption = document.createElement("option");
+  allOption.value = "all";
+  allOption.textContent = "All";
+  selectElement.appendChild(allOption);
+
   for (const genre of genres) {
     const option = document.createElement("option");
     option.value = genre;
@@ -157,6 +172,7 @@ function renderGenresOptions(genres, selectElement) {
     selectElement.appendChild(option);
   }
 }
+
 
 getUniqueGenres();
 
